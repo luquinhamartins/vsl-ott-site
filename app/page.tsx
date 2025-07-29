@@ -165,8 +165,8 @@ export default function SophisticatedOTTVSL() {
               <div className="relative bg-black rounded-2xl overflow-hidden shadow-2xl border-4 border-purple-500 animate-glow-border">
                 <div style={{ position: "relative", paddingTop: "56.25%" }}>
                   <iframe
-                    id="panda-24e32f4e-4307-4334-8b03-3ef5488bf103"
-                    src="https://player-vz-e16bd649-1af.tv.pandavideo.com.br/embed/?v=24e32f4e-4307-4334-8b03-3ef5488bf103"
+                    id="vid-6848861f419c832a1dc0a45b"
+                    src="https://scripts.converteai.net/117221f1-0f48-48fa-9c74-b51fb7ca8937/players/6848861f419c832a1dc0a45b/v4/player.js"
                     style={{
                       border: "none",
                       position: "absolute",
