@@ -161,32 +161,24 @@ export default function SophisticatedOTTVSL() {
 
           {/* VSL - Player de Vídeo */}
           <div className="mb-8">
-            <div className="w-full max-w-4xl mx-auto">
-              <div className="relative bg-black rounded-2xl overflow-hidden shadow-2xl border-4 border-purple-500 animate-glow-border">
-                <div style={{ position: "relative", paddingTop: "56.25%" }}>
-                  <iframe
-                    id="vid-6848861f419c832a1dc0a45b"
-                    src="https://scripts.converteai.net/117221f1-0f48-48fa-9c74-b51fb7ca8937/players/6848861f419c832a1dc0a45b/v4/player.js"
-                    style={{
-                      border: "none",
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      width: "100%",
-                      height: "100%",
-                    }}
-                    allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
-                    allowFullScreen={true}
-                    muted
-                    playsInline
-                    fetchPriority="high"
-                    title="Vídeo de Apresentação da Tecnologia OTT"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
+  <div className="w-full max-w-4xl mx-auto">
+    <div className="relative bg-black rounded-2xl overflow-hidden shadow-2xl border-4 border-purple-500 animate-glow-border">
+      <div style={{ position: "relative", paddingTop: "56.25%" }}>
+        <div
+          id="vid-6848861f419c832a1dc0a45b"
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            zIndex: 1,
+          }}
+        />
+      </div>
+    </div>
+  </div>
+</div>
           {/* Contador de Pessoas Assistindo Animado */}
           <div className="text-center mb-8">
             <div className="inline-block relative animate-bounce-gentle">
