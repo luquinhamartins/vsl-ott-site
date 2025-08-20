@@ -55,6 +55,33 @@ export default function SophisticatedOTTVSL() {
     }
   }, [contentUnlocked]) // contentUnlocked como dependência para o log, mas o timer não é reiniciado
 
+  // useEffect para carregar o script do ConvertAI SDK
+  useEffect(() => {
+    // Verifica se o script já foi carregado
+    if (document.querySelector('script[src*="smartplayer-wc"]')) {
+      return
+    }
+
+    const script = document.createElement("script")
+    script.src = "https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js"
+    script.async = true
+    script.onload = () => {
+      console.log("ConvertAI SDK loaded successfully")
+    }
+    script.onerror = () => {
+      console.error("Failed to load ConvertAI SDK")
+    }
+    document.head.appendChild(script)
+
+    return () => {
+      // Cleanup: remove o script quando o componente for desmontado
+      const existingScript = document.querySelector('script[src*="smartplayer-wc"]')
+      if (existingScript) {
+        document.head.removeChild(existingScript)
+      }
+    }
+  }, [])
+
   // Calcula minutos, segundos e milissegundos para exibição
   const displayMinutes = Math.floor(remainingTime / 60000)
   const displaySeconds = Math.floor((remainingTime % 60000) / 1000)
@@ -123,7 +150,7 @@ export default function SophisticatedOTTVSL() {
 📢 Anúncio: ${utms.utm_content}`
 
     const encodedMessage = encodeURIComponent(message.trim())
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=5511989796945&text=${encodedMessage}`
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=5511967214228&text=${encodedMessage}`
     window.open(whatsappUrl, "_blank")
   }
 
@@ -161,24 +188,43 @@ export default function SophisticatedOTTVSL() {
 
           {/* VSL - Player de Vídeo */}
           <div className="mb-8">
-  <div className="w-full max-w-4xl mx-auto">
-    <div className="relative bg-black rounded-2xl overflow-hidden shadow-2xl border-4 border-purple-500 animate-glow-border">
-      <div style={{ position: "relative", paddingTop: "56.25%" }}>
-        <div
-          id="vid-6848861f419c832a1dc0a45b"
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            zIndex: 1,
-          }}
-        />
-      </div>
-    </div>
-  </div>
-</div>
+            <div className="w-full max-w-4xl mx-auto">
+              <div className="relative bg-black rounded-2xl overflow-hidden shadow-2xl border-4 border-purple-500 animate-glow-border">
+                <div id="ifr_688e6a8a3614ea4fa0b265d9_wrapper" style={{ margin: "0 auto", width: "100%" }}>
+                  <div
+                    style={{ position: "relative", padding: "56.25% 0 0 0" }}
+                    id="ifr_688e6a8a3614ea4fa0b265d9_aspect"
+                  >
+                    <iframe
+                      frameBorder="0"
+                      allowFullScreen
+                      src="about:blank"
+                      id="ifr_688e6a8a3614ea4fa0b265d9"
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                      }}
+                      referrerPolicy="origin"
+                      onLoad={(e) => {
+                        const iframe = e.target as HTMLIFrameElement
+                        if (iframe.src === "about:blank") {
+                          iframe.onload = null
+                          iframe.src = `https://scripts.converteai.net/117221f1-0f48-48fa-9c74-b51fb7ca8937/players/688e6a8a3614ea4fa0b265d9/v4/embed.html${
+                            location.search || "?"
+                          }&vl=${encodeURIComponent(location.href)}`
+                        }
+                      }}
+                      title="Vídeo de Apresentação da Tecnologia OTT"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Contador de Pessoas Assistindo Animado */}
           <div className="text-center mb-8">
             <div className="inline-block relative animate-bounce-gentle">
