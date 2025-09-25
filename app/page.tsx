@@ -136,7 +136,7 @@ export default function SophisticatedOTTVSL() {
 📢 Anúncio: ${utms.utm_content}`
 
     const encodedMessage = encodeURIComponent(message.trim())
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=5511967214228&text=${encodedMessage}`
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=5511989796945&text=${encodedMessage}`
     window.open(whatsappUrl, "_blank")
   }
 
