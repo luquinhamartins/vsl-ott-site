@@ -117,20 +117,6 @@ export default function SophisticatedOTTVSL() {
     { name: "PlayPlus (Record)", price: 15.9 },
   ]
 
-  const streamingLogos = [
-    { name: "Netflix", src: "/logos/netflix.jpeg" },
-    { name: "Prime Video", src: "/logos/amazon-prime.png" },
-    { name: "Disney+", src: "/logos/disney-plus.png" },
-    { name: "Globoplay", src: "/logos/globoplay.jpeg" },
-    { name: "Star+", src: "/logos/star-plus.webp" },
-    { name: "Paramount+", src: "/logos/paramount-plus.png" },
-    { name: "Apple TV+", src: "/logos/apple-tv.png" },
-    { name: "Lionsgate+", src: "/logos/lionsgate-plus.webp" },
-    { name: "DAZN", src: "/logos/dazn.jpeg" },
-    { name: "TNT Sports", src: "/logos/tnt-sports.png" },
-    { name: "Premiere", src: "/logos/premiere.png" },
-  ]
-
   const totalPrice = platforms.reduce((sum, platform) => sum + platform.price, 0)
 
   const handleWhatsAppClick = () => {
@@ -158,16 +144,18 @@ export default function SophisticatedOTTVSL() {
     <ErrorBoundary>
       <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
         {/* Header */}
-        <header className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 text-white py-4 text-center shadow-2xl">
-          <div className="animate-pulse">
-            <span className="text-lg font-bold">🔥 NOVA TECNOLOGIA OTT - ACESSO LIBERADO POR TEMPO LIMITADO! 🔥</span>
+        <header className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 text-white py-2 sm:py-4 text-center shadow-2xl">
+          <div className="animate-pulse px-2">
+            <span className="text-sm sm:text-lg font-bold">
+              🔥 NOVA TECNOLOGIA OTT - ACESSO LIBERADO POR TEMPO LIMITADO! 🔥
+            </span>
           </div>
         </header>
 
-        <div className="container mx-auto px-4 py-12 max-w-6xl">
+        <div className="container mx-auto px-2 sm:px-4 py-6 sm:py-12 max-w-6xl">
           {/* Título Principal Animado */}
-          <div className="text-center mb-12">
-            <h1 className="text-2xl md:text-5xl lg:text-6xl font-black mb-8 leading-tight animate-fade-in-up">
+          <div className="text-center mb-8 sm:mb-12 px-2">
+            <h1 className="text-xl sm:text-2xl md:text-5xl lg:text-6xl font-black mb-4 sm:mb-8 leading-tight animate-fade-in-up">
               <span className="inline-block animate-bounce-slow bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
                 DESCUBRA COMO LIBERAR
               </span>
@@ -180,16 +168,16 @@ export default function SophisticatedOTTVSL() {
                 COM A NOVA TECNOLOGIA
               </span>
               <br />
-              <span className="inline-block animate-pulse bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent glow-text-yellow text-7xl">
+              <span className="inline-block animate-pulse bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent glow-text-yellow text-3xl sm:text-7xl">
                 OTT
               </span>
             </h1>
           </div>
 
           {/* VSL - Player de Vídeo */}
-          <div className="mb-8">
+          <div className="mb-8 px-2 sm:px-0">
             <div className="w-full max-w-4xl mx-auto">
-              <div className="relative bg-black rounded-2xl overflow-hidden shadow-2xl border-4 border-purple-500 animate-glow-border">
+              <div className="relative bg-black rounded-lg sm:rounded-2xl overflow-hidden shadow-2xl border-2 sm:border-4 border-purple-500 animate-glow-border">
                 <div id="ifr_688e6a8a3614ea4fa0b265d9_wrapper" style={{ margin: "0 auto", width: "100%" }}>
                   <div
                     style={{ position: "relative", padding: "56.25% 0 0 0" }}
@@ -262,64 +250,20 @@ export default function SophisticatedOTTVSL() {
           ) : null}
 
           {/* Call to Action */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 animate-fade-in">
+          <div className="text-center mb-12 sm:mb-16 px-2">
+            <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 animate-fade-in">
               📺 ASSISTA O VÍDEO PARA LIBERAR O <span className="text-green-400 animate-pulse">TESTE GRÁTIS</span>
             </h2>
-            <p className="text-xl text-gray-300 font-medium animate-fade-in-delay">
+            <p className="text-base sm:text-xl text-gray-300 font-medium animate-fade-in-delay">
               DESCUBRA COMO TER ACESSO A TODAS AS PLATAFORMAS POR UMA FRAÇÃO DO PREÇO
             </p>
           </div>
 
-          {/* Carrossel de Logos das Plataformas com Logos Oficiais */}
-          <div className="mb-16 overflow-hidden">
-            <h3 className="text-2xl font-bold text-center text-white mb-8">
-              🎬 Todas essas plataformas em um só lugar:
+          {/* Seção de Plataformas Simplificada */}
+          <div className="mb-16 text-center">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              🎬 Todas as plataformas reunidas em um só lugar
             </h3>
-            <div className="relative">
-              <div className="flex animate-scroll-infinite items-center">
-                {/* Primeira sequência */}
-                {streamingLogos.map((platform, index) => (
-                  <div
-                    key={`first-${index}`}
-                    className={`flex-shrink-0 mx-4 w-48 h-32 flex items-center justify-center`}
-                  >
-                    <img
-                      src={platform.src || "/placeholder.svg"}
-                      alt={platform.name}
-                      className="w-full h-full object-contain"
-                      onError={(e) => {
-                        e.currentTarget.src = "/placeholder.svg" // Fallback to a generic placeholder
-                        e.currentTarget.onerror = null // Prevent infinite loop if placeholder also fails
-                        console.error(
-                          `Failed to load image: ${platform.name} (${platform.src}). Falling back to placeholder.`,
-                        )
-                      }}
-                    />
-                  </div>
-                ))}
-                {/* Segunda sequência para loop infinito */}
-                {streamingLogos.map((platform, index) => (
-                  <div
-                    key={`second-${index}`}
-                    className={`flex-shrink-0 mx-4 w-48 h-32 flex items-center justify-center`}
-                  >
-                    <img
-                      src={platform.src || "/placeholder.svg"}
-                      alt={platform.name}
-                      className="w-full h-full object-contain"
-                      onError={(e) => {
-                        e.currentTarget.src = "/placeholder.svg" // Fallback to a generic placeholder
-                        e.currentTarget.onerror = null // Prevent infinite loop if placeholder also fails
-                        console.error(
-                          `Failed to load image: ${platform.name} (${platform.src}). Falling back to placeholder.`,
-                        )
-                      }}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
 
           {/* Animation de Desbloqueio */}
@@ -557,7 +501,7 @@ export default function SophisticatedOTTVSL() {
             0%, 100% { text-shadow: 0 0 10px #fbbf24; }
             50% { text-shadow: 0 0 20px #f59e0b, 0 0 30px #f59e0b; }
           }
-
+          
           @keyframes pulse-slow {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.7; }
@@ -634,6 +578,35 @@ export default function SophisticatedOTTVSL() {
             animation: draw-strikethrough 0.4s ease-out forwards;
             animation-delay: var(--strikethrough-delay);
             opacity: 0;
+          }
+
+          /* Mobile optimizations */
+          @media (max-width: 640px) {
+            .container {
+              padding-left: 8px;
+              padding-right: 8px;
+            }
+            
+            .animate-scroll-infinite {
+              animation-duration: 15s;
+            }
+            
+            .glow-text {
+              text-shadow: 0 0 10px #10b981, 0 0 20px #10b981;
+            }
+            
+            .glow-text-yellow {
+              text-shadow: 0 0 10px #f59e0b, 0 0 20px #f59e0b;
+            }
+          }
+
+          /* Prevent horizontal scroll */
+          body {
+            overflow-x: hidden;
+          }
+
+          * {
+            box-sizing: border-box;
           }
         `}</style>
       </div>
