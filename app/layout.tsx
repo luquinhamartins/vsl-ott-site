@@ -9,7 +9,6 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Tecnologia OTT",
   description: "Descubra como liberar todas as plataformas com a nova tecnologia OTT",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
