@@ -55,27 +55,34 @@ export default function SophisticatedOTTVSL() {
     }
   }, [contentUnlocked]) // contentUnlocked como dependência para o log, mas o timer não é reiniciado
 
-  // useEffect para carregar o script do ConvertAI SDK
+  // useEffect para carregar o script da vturb
   useEffect(() => {
     // Verifica se o script já foi carregado
-    if (document.querySelector('script[src*="smartplayer-wc"]')) {
+    if (
+      document.querySelector(
+        'script[src*="converteai.net/117221f1-0f48-48fa-9c74-b51fb7ca8937/players/688e6a8a3614ea4fa0b265d9/v4/player.js"]',
+      )
+    ) {
       return
     }
 
     const script = document.createElement("script")
-    script.src = "https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js"
+    script.src =
+      "https://scripts.converteai.net/117221f1-0f48-48fa-9c74-b51fb7ca8937/players/688e6a8a3614ea4fa0b265d9/v4/player.js"
     script.async = true
     script.onload = () => {
-      console.log("ConvertAI SDK loaded successfully")
+      console.log("vturb player script loaded successfully")
     }
     script.onerror = () => {
-      console.error("Failed to load ConvertAI SDK")
+      console.error("Failed to load vturb player script")
     }
     document.head.appendChild(script)
 
     return () => {
       // Cleanup: remove o script quando o componente for desmontado
-      const existingScript = document.querySelector('script[src*="smartplayer-wc"]')
+      const existingScript = document.querySelector(
+        'script[src*="converteai.net/117221f1-0f48-48fa-9c74-b51fb7ca8937/players/688e6a8a3614ea4fa0b265d9/v4/player.js"]',
+      )
       if (existingScript) {
         document.head.removeChild(existingScript)
       }
@@ -136,7 +143,7 @@ export default function SophisticatedOTTVSL() {
 📢 Anúncio: ${utms.utm_content}`
 
     const encodedMessage = encodeURIComponent(message.trim())
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=5511989796945&text=${encodedMessage}`
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=5511967214228&text=${encodedMessage}`
     window.open(whatsappUrl, "_blank")
   }
 
@@ -178,37 +185,10 @@ export default function SophisticatedOTTVSL() {
           <div className="mb-8 px-2 sm:px-0">
             <div className="w-full max-w-4xl mx-auto">
               <div className="relative bg-black rounded-lg sm:rounded-2xl overflow-hidden shadow-2xl border-2 sm:border-4 border-purple-500 animate-glow-border">
-                <div id="ifr_688e6a8a3614ea4fa0b265d9_wrapper" style={{ margin: "0 auto", width: "100%" }}>
-                  <div
-                    style={{ position: "relative", padding: "56.25% 0 0 0" }}
-                    id="ifr_688e6a8a3614ea4fa0b265d9_aspect"
-                  >
-                    <iframe
-                      frameBorder="0"
-                      allowFullScreen
-                      src="about:blank"
-                      id="ifr_688e6a8a3614ea4fa0b265d9"
-                      style={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100%",
-                      }}
-                      referrerPolicy="origin"
-                      onLoad={(e) => {
-                        const iframe = e.target as HTMLIFrameElement
-                        if (iframe.src === "about:blank") {
-                          iframe.onload = null
-                          iframe.src = `https://scripts.converteai.net/117221f1-0f48-48fa-9c74-b51fb7ca8937/players/688e6a8a3614ea4fa0b265d9/v4/embed.html${
-                            location.search || "?"
-                          }&vl=${encodeURIComponent(location.href)}`
-                        }
-                      }}
-                      title="Vídeo de Apresentação da Tecnologia OTT"
-                    />
-                  </div>
-                </div>
+                <vturb-smartplayer
+                  id="vid-688e6a8a3614ea4fa0b265d9"
+                  style={{ display: "block", margin: "0 auto", width: "100%" }}
+                />
               </div>
             </div>
           </div>
